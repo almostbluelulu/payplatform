@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yeepay.g3.core.whitebroad.repository.QrCodeDao">
+    <!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="com.yeepay.g3.core.whitebroad.entity.qrcode.QrCode">
+        <result column="qr_id" property="qrId"/>
+        <result column="qr_url" property="qrUrl"/>
+        <result column="customer_number" property="customerNumber"/>
+        <result column="shop_number" property="shopNumber"/>
+        <result column="user_number" property="userNumber"/>
+        <result column="remark" property="remark"/>
+        <result column="status" property="status"/>
+        <result column="relation_id" property="relationId"/>
+        <result column="id" property="id"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="all_column">
+        `qr_id`,
+        `qr_url`,
+        `customer_number`,
+        `shop_number`,
+        `user_number`,
+        `remark`,
+        `status`,
+        `relation_id`,
+        `id`,
+        `create_time`,
+        `update_time`
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO wb_qr_code (
+            `qr_id`,
+            `qr_url`,
+            `customer_number`,
+            `shop_number`,
+            `user_number`,
+            `remark`,
+            `status`,
+            `relation_id`,
+            `id`,
+            `create_time`,
+            `update_time`
+        ) VALUES (
+            #{pojo.qrId},
+            #{pojo.qrUrl},
+            #{pojo.customerNumber},
+            #{pojo.shopNumber},
+            #{pojo.userNumber},
+            #{pojo.remark},
+            #{pojo.status},
+            #{pojo.relationId},
+            #{pojo.id},
+            #{pojo.createTime},
+            #{pojo.updateTime}
+        )
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO wb_qr_code (
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.qrId},
+            #{pojo.qrUrl},
+            #{pojo.customerNumber},
+            #{pojo.shopNumber},
+            #{pojo.userNumber},
+            #{pojo.remark},
+            #{pojo.status},
+            #{pojo.relationId},
+            #{pojo.id},
+            #{pojo.createTime},
+            #{pojo.updateTime}
+            )
+        </foreach>
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="update">
+        UPDATE wb_qr_code
+        <set>
+            <if test="pojo.qrId != null"> `qr_id` = #{pojo.qrId}, </if>
+            <if test="pojo.qrUrl != null"> `qr_url` = #{pojo.qrUrl}, </if>
+            <if test="pojo.customerNumber != null"> `customer_number` = #{pojo.customerNumber}, </if>
+            <if test="pojo.shopNumber != null"> `shop_number` = #{pojo.shopNumber}, </if>
+            <if test="pojo.userNumber != null"> `user_number` = #{pojo.userNumber}, </if>
+            <if test="pojo.remark != null"> `remark` = #{pojo.remark}, </if>
+            <if test="pojo.status != null"> `status` = #{pojo.status}, </if>
+            <if test="pojo.relationId != null"> `relation_id` = #{pojo.relationId}, </if>
+            <if test="pojo.id != null"> `id` = #{pojo.id}, </if>
+            <if test="pojo.createTime != null"> `create_time` = #{pojo.createTime}, </if>
+            <if test="pojo.updateTime != null"> `update_time` = #{pojo.updateTime} </if>
+        </set>
+        WHERE id = #{pojo.id}
+    </update>
+
+    <select id="getActiveQrByCustomer" resultMap="AllColumnMap">
+        select
+        <include refid="all_column" />
+        from wb_qr_code
+        where customer_number = #{customerNumber} and status = #{status}
+    </select>
+    <select id="getQrCodeByID" resultMap="AllColumnMap">
+        select
+        <include refid="all_column" />
+        from wb_qr_code
+        where qr_id = #{qrId}
+    </select>
+
+    <select id="getSequence" resultType="java.lang.Long">
+        select nextval('seq_wb_qrcode');
+    </select>
+
+</mapper>
+

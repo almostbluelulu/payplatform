@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/whitebroad-core/whitebroad-core.iml" filepath="$PROJECT_DIR$/whitebroad-core/whitebroad-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/whitebroad-facade/whitebroad-facade.iml" filepath="$PROJECT_DIR$/whitebroad-facade/whitebroad-facade.iml" />
+      <module fileurl="file://$PROJECT_DIR$/whitebroad-hessian/whitebroad-hessian.iml" filepath="$PROJECT_DIR$/whitebroad-hessian/whitebroad-hessian.iml" />
+      <module fileurl="file://$PROJECT_DIR$/whitebroad-parent.iml" filepath="$PROJECT_DIR$/whitebroad-parent.iml" />
+    </modules>
+  </component>
+</project>

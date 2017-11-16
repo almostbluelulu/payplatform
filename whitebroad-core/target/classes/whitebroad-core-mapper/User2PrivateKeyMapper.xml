@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yeepay.g3.core.whitebroad.repository.User2PrivateKeyDao">
+    <!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="com.yeepay.g3.core.whitebroad.entity.User2PrivateKey">
+        <result column="user_number" property="userNumber"/>
+        <result column="customer_number" property="customerNumber"/>
+        <result column="private_key" property="privateKey"/>
+        <result column="id" property="id"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="all_column">
+        `user_number`,
+        `customer_number`,
+        `private_key`,
+        `id`,
+        `create_time`,
+        `update_time`
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO wb_user2private_key (
+            `user_number`,
+            `customer_number`,
+            `private_key`,
+            `id`,
+            `create_time`,
+            `update_time`
+        ) VALUES (
+            #{pojo.userNumber},
+            #{pojo.customerNumber},
+            #{pojo.privateKey},
+            #{pojo.id},
+            #{pojo.createTime},
+            #{pojo.updateTime}
+        )
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO wb_user2private_key
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.userNumber!=null"> `user_number`,</if>
+            <if test="pojo.customerNumber!=null"> `customer_number`,</if>
+            <if test="pojo.privateKey!=null"> `private_key`,</if>
+            <if test="pojo.id!=null"> `id`,</if>
+            <if test="pojo.createTime!=null"> `create_time`,</if>
+            <if test="pojo.updateTime!=null"> `update_time`,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.userNumber!=null">#{pojo.userNumber},</if>
+            <if test="pojo.customerNumber!=null">#{pojo.customerNumber},</if>
+            <if test="pojo.privateKey!=null">#{pojo.privateKey},</if>
+            <if test="pojo.id!=null">#{pojo.id},</if>
+            <if test="pojo.createTime!=null">#{pojo.createTime},</if>
+            <if test="pojo.updateTime!=null">#{pojo.updateTime},</if>
+        </trim>
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO wb_user2private_key (
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.userNumber},
+            #{pojo.customerNumber},
+            #{pojo.privateKey},
+            #{pojo.id},
+            #{pojo.createTime},
+            #{pojo.updateTime}
+            )
+        </foreach>
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="update">
+        UPDATE wb_user2private_key
+        <set>
+            <if test="pojo.userNumber != null"> `user_number` = #{pojo.userNumber}, </if>
+            <if test="pojo.customerNumber != null"> `customer_number` = #{pojo.customerNumber}, </if>
+            <if test="pojo.privateKey != null"> `private_key` = #{pojo.privateKey}, </if>
+            <if test="pojo.id != null"> `id` = #{pojo.id}, </if>
+            <if test="pojo.createTime != null"> `create_time` = #{pojo.createTime}, </if>
+            <if test="pojo.updateTime != null"> `update_time` = #{pojo.updateTime} </if>
+        </set>
+        WHERE id = #{pojo.id}
+    </update>
+
+    <select id="getByUserNumber" resultMap="AllColumnMap">
+          select
+          <include refid="all_column"/>
+         from wb_user2private_key where user_number=#{userNumber}
+    </select>
+
+
+</mapper>
+

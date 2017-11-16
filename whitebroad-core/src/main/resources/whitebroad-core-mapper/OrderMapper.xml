@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yeepay.g3.core.whitebroad.repository.OrderDao">
+    <!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="com.yeepay.g3.core.whitebroad.entity.trade.Order">
+        <result column="id" property="id"/>
+        <result column="version" property="version"/>
+        <result column="customer_number" property="customerNumber"/>
+        <result column="request_no" property="requestNo"/>
+        <result column="yeepay_order_id" property="yeepayOrderId"/>
+        <result column="user_number" property="userNumber"/>
+        <result column="qr_id" property="qrID"/>
+        <result column="order_type" property="orderType"/>
+        <result column="scan_type" property="scanType"/>
+        <result column="order_status" property="orderStatus"/>
+        <result column="trx_amt" property="trxAmt"/>
+        <result column="real_amount" property="realAmount"/>
+        <result column="fee_amount" property="feeAmount"/>
+        <result column="refund_amount" property="refundAmount"/>
+        <result column="create_time" property="createTime"/>
+        <result column="complete_time" property="completeTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="err_code" property="errCode"/>
+        <result column="err_message" property="errMessage"/>
+        <result column="remark" property="remark"/>
+        <result column="token" property="token"/>
+        <result column="pay_type" property="payType"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="all_column">
+        `id`,
+        `version`,
+        `customer_number`,
+        `request_no`,
+        `yeepay_order_id`,
+        `user_number`,
+        `qr_id`,
+        `order_type`,
+        `scan_type`,
+        `order_status`,
+        `trx_amt`,
+        `real_amount`,
+        `fee_amount`,
+        `refund_amount`,
+        `create_time`,
+        `complete_time`,
+        `update_time`,
+        `err_code`,
+        `err_message`,
+        `remark`,
+        `token`,
+        `pay_type`
+</sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO wb_order (
+            `id`,
+            `version`,
+            `customer_number`,
+            `request_no`,
+            `yeepay_order_id`,
+            `user_number`,
+            `qr_id`,
+            `order_type`,
+            `scan_type`,
+            `order_status`,
+            `trx_amt`,
+            `real_amount`,
+            `fee_amount`,
+            `refund_amount`,
+            `create_time`,
+            `complete_time`,
+            `update_time`,
+            `err_code`,
+            `err_message`,
+            `remark`,
+            `token`,
+            `pay_type`
+        ) VALUES (
+            #{pojo.id},
+            0,
+            #{pojo.customerNumber},
+            #{pojo.requestNo},
+            #{pojo.yeepayOrderId},
+            #{pojo.userNumber},
+            #{pojo.qrID},
+            #{pojo.orderType},
+            #{pojo.scanType},
+            #{pojo.orderStatus},
+            #{pojo.trxAmt},
+            #{pojo.realAmount},
+            #{pojo.feeAmount},
+            #{pojo.refundAmount},
+            #{pojo.createTime},
+            #{pojo.completeTime},
+            #{pojo.updateTime},
+            #{pojo.errCode},
+            #{pojo.errMessage},
+            #{pojo.remark},
+            #{pojo.token},
+            #{pojo.payType}
+        )
+    </insert>
+
+    <!--auto generated Code-->
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO wb_order (
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.id},
+            #{pojo.version},
+            #{pojo.customerNumber},
+            #{pojo.requestNo},
+            #{pojo.yeepayOrderId},
+            #{pojo.userNumber},
+            #{pojo.qrID},
+            #{pojo.orderType},
+            #{pojo.scanType},
+            #{pojo.orderStatus},
+            #{pojo.trxAmt},
+            #{pojo.realAmount},
+            #{pojo.feeAmount},
+            #{pojo.refundAmount},
+            #{pojo.createTime},
+            #{pojo.completeTime},
+            #{pojo.updateTime},
+            #{pojo.errCode},
+            #{pojo.errMessage},
+            #{pojo.remark}
+            )
+        </foreach>
+    </insert>
+    <!--auto generated Code-->
+    <update id="update">
+        UPDATE wb_order
+        <set>
+            <if test="pojo.id != null"> `id` = #{pojo.id}, </if>
+            `version` = version+1,
+            <if test="pojo.customerNumber != null"> `customer_number` = #{pojo.customerNumber}, </if>
+            <if test="pojo.requestNo != null"> `request_no` = #{pojo.requestNo}, </if>
+            <if test="pojo.yeepayOrderId != null"> `yeepay_order_id` = #{pojo.yeepayOrderId}, </if>
+            <if test="pojo.userNumber != null"> `user_number` = #{pojo.userNumber}, </if>
+            <if test="pojo.qrID != null"> `qr_id` = #{pojo.qrID}, </if>
+            <if test="pojo.orderType != null"> `order_type` = #{pojo.orderType}, </if>
+            <if test="pojo.scanType != null"> `scan_type` = #{pojo.scanType}, </if>
+            <if test="pojo.orderStatus != null"> `order_status` = #{pojo.orderStatus}, </if>
+            <if test="pojo.trxAmt != null"> `trx_amt` = #{pojo.trxAmt}, </if>
+            <if test="pojo.realAmount != null"> `real_amount` = #{pojo.realAmount}, </if>
+            <if test="pojo.feeAmount != null"> `fee_amount` = #{pojo.feeAmount}, </if>
+            <if test="pojo.refundAmount != null"> `refund_amount` = #{pojo.refundAmount}, </if>
+            <if test="pojo.createTime != null"> `create_time` = #{pojo.createTime}, </if>
+            <if test="pojo.completeTime != null"> `complete_time` = #{pojo.completeTime}, </if>
+            <if test="pojo.updateTime != null"> `update_time` = #{pojo.updateTime}, </if>
+            <if test="pojo.errCode != null"> `err_code` = #{pojo.errCode}, </if>
+            <if test="pojo.errMessage != null"> `err_message` = #{pojo.errMessage}, </if>
+            <if test="pojo.remark != null"> `remark` = #{pojo.remark}, </if>
+            <if test="pojo.token != null"> `token` = #{pojo.token} ,</if>
+            <if test="pojo.payType != null"> `pay_type` = #{pojo.payType} </if>
+        </set>
+        WHERE id = #{pojo.id}
+    </update>
+
+    <select id="findByID" resultMap="AllColumnMap" >
+        SELECT
+        <include refid="all_column"/>
+        from wb_order
+        where ID = #{id}
+    </select>
+
+    <select id="findByRequestNo" resultMap="AllColumnMap" >
+        SELECT
+        <include refid="all_column"/>
+        from wb_order
+        where request_no = #{requestNo}
+        and customer_number = #{customerNumber}
+    </select>
+
+    <select id="getSequence" resultType="java.lang.Long">
+        select nextval('seq_wb_order');
+    </select>
+
+	<select id="selectReceiptList" resultMap="AllColumnMap">
+		SELECT
+		<include refid="all_column"/>
+		from wb_order
+		where user_number = #{userNumber}
+		<if test="startDate != null">and create_time &gt;= #{startDate}</if>
+        <if test="endDate != null">and create_time &lt;= #{endDate} '23:59:59'</if>
+		<if test="id != null">and id = #{id}</if>
+		<if test="payType != 'ALL' and payType != null">and pay_type = #{payType}</if>
+		<if test="orderStatus != 'ALL' and orderStatus != null">and order_status = #{orderStatus}</if>
+		<if test="orderStatus == 'ALL' or orderStatus == null">and order_status not in ('INIT', 'PROCESS')</if>
+		order by complete_time desc
+		limit #{fromIndex}, #{pageSize}
+	</select>
+
+    <select id="getOrderTotalCount" resultType="int">
+        SELECT
+        count(1) AS totalCount
+        from wb_order
+        where user_number = #{userNumber}
+        <if test="startDate != null">and create_time &gt;= #{startDate}</if>
+        <if test="endDate != null">and create_time &lt;= #{endDate} '23:59:59'</if>
+        <if test="id != null">and id = #{id}</if>
+        <if test="payType != 'ALL' and payType != null">and pay_type = #{payType}</if>
+        <if test="orderStatus != 'ALL' and orderStatus != null">and order_status = #{orderStatus}</if>
+        <if test="orderStatus == 'ALL' or orderStatus == null">and order_status not in ('INIT', 'PROCESS')</if>
+    </select>
+
+    <select id="findByYeepayId" resultMap="AllColumnMap" >
+        SELECT
+        <include refid="all_column"/>
+        from wb_order
+        where yeepay_order_id = #{yeepayid}
+    </select>
+</mapper>
+

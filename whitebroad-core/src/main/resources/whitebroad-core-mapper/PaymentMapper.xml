@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yeepay.g3.core.whitebroad.repository.PaymentDao">
+    <!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="com.yeepay.g3.core.whitebroad.entity.trade.Payment">
+        <result column="id" property="id"/>
+        <result column="yeepay_order_id" property="yeepayOrderId"/>
+        <result column="order_id" property="order_id"/>
+        <result column="customer_number" property="customerNumber"/>
+        <result column="pay_status" property="payStatus"/>
+        <result column="pay_type" property="payType"/>
+        <result column="trx_amt" property="trxAmt"/>
+        <result column="real_amount" property="realAmount"/>
+        <result column="fee_amount" property="feeAmount"/>
+        <result column="bank_name" property="bankName"/>
+        <result column="card_number" property="cardNumber" typeHandler="com.yeepay.g3.core.whitebroad.handler.SensitiveL2StringHandler"/>
+        <result column="card_type" property="cardType"/>
+        <result column="create_time" property="createTime"/>
+        <result column="complete_time" property="completeTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="version" property="version"/>
+        <result column="trx_type" property="trxType"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="all_column">
+        `id`,
+        `yeepay_order_id`,
+        `order_id`,
+        `customer_number`,
+        `pay_status`,
+        `pay_type`,
+        `trx_amt`,
+        `real_amount`,
+        `fee_amount`,
+        `bank_name`,
+        `card_number`,
+        `card_type`,
+        `create_time`,
+        `complete_time`,
+        `update_time`,
+        `version`,
+        `trx_type`
+</sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO wb_payment (
+            `id`,
+            `yeepay_order_id`,
+            `order_id`,
+            `customer_number`,
+            `pay_status`,
+            `pay_type`,
+            `trx_amt`,
+            `real_amount`,
+            `fee_amount`,
+            `bank_name`,
+            `card_number`,
+            `card_type`,
+            `create_time`,
+            `complete_time`,
+            `update_time`,
+            `version`,
+            `trx_type`
+        ) VALUES (
+            #{pojo.id},
+            #{pojo.yeepayOrderId},
+            #{pojo.order_id},
+            #{pojo.customerNumber},
+            #{pojo.payStatus},
+            #{pojo.payType},
+            #{pojo.trxAmt},
+            #{pojo.realAmount},
+            #{pojo.feeAmount},
+            #{pojo.bankName},
+            #{pojo.cardNumber,jdbcType=VARCHAR,typeHandler = com.yeepay.g3.core.whitebroad.handler.SensitiveL2StringHandler},
+            #{pojo.cardType},
+            #{pojo.createTime},
+            #{pojo.completeTime},
+            #{pojo.updateTime},
+            version=0,
+            #{pojo.trxType}
+        )
+    </insert>
+
+    <!--auto generated Code-->
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO wb_payment (
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.id},
+            #{pojo.yeepayOrderId},
+            #{pojo.order_id},
+            #{pojo.customerNumber},
+            #{pojo.payStatus},
+            #{pojo.payType},
+            #{pojo.trxAmt},
+            #{pojo.realAmount},
+            #{pojo.feeAmount},
+            #{pojo.bankName},
+            #{pojo.cardNumber},
+            #{pojo.cardType},
+            #{pojo.createTime},
+            #{pojo.completeTime},
+            #{pojo.updateTime},
+            version = 0,
+            #{pojo.trxType},
+            )
+        </foreach>
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="update">
+        UPDATE wb_payment
+        <set>
+            <if test="pojo.id != null"> `id` = #{pojo.id}, </if>
+            <if test="pojo.yeepayOrderId != null"> `yeepay_order_id` = #{pojo.yeepayOrderId}, </if>
+            <if test="pojo.order_id != null"> `order_id` = #{pojo.order_id}, </if>
+            <if test="pojo.customerNumber != null"> `customer_number` = #{pojo.customerNumber}, </if>
+            <if test="pojo.payStatus != null"> `pay_status` = #{pojo.payStatus}, </if>
+            <if test="pojo.payType != null"> `pay_type` = #{pojo.payType}, </if>
+            <if test="pojo.trxAmt != null"> `trx_amt` = #{pojo.trxAmt}, </if>
+            <if test="pojo.realAmount != null"> `real_amount` = #{pojo.realAmount}, </if>
+            <if test="pojo.feeAmount != null"> `fee_amount` = #{pojo.feeAmount}, </if>
+            <if test="pojo.bankName != null"> `bank_name` = #{pojo.bankName}, </if>
+            <if test="pojo.cardNumber != null"> `card_number` = #{pojo.cardNumber,jdbcType=VARCHAR,typeHandler=com.yeepay.g3.core.whitebroad.handler.SensitiveL2StringHandler}, </if>
+            <if test="pojo.cardType != null"> `card_type` = #{pojo.cardType}, </if>
+            <if test="pojo.createTime != null"> `create_time` = #{pojo.createTime}, </if>
+            <if test="pojo.completeTime != null"> `complete_time` = #{pojo.completeTime}, </if>
+            <if test="pojo.updateTime != null"> `update_time` = #{pojo.updateTime} ,</if>
+            version = version+1,
+            <if test="pojo.trxType != null"> `trx_type` = #{pojo.trxType} ,</if>
+        </set>
+        WHERE id = #{pojo.id}
+    </update>
+
+    <select id="selectByOrderID" resultMap="AllColumnMap" >
+        SELECT
+        <include refid="all_column"/>
+        from wb_payment
+        where order_id = #{orderID}
+        and trx_type = #{trxType}
+    </select>
+
+    <select id="selectByYeepayOrderID" resultMap="AllColumnMap" >
+        SELECT
+        <include refid="all_column"/>
+        from wb_payment
+        where yeepay_order_id = #{yeepayOrderId}
+    </select>
+
+    <select id="getSequence" resultType="java.lang.Long">
+        select nextval('seq_wb_payment');
+    </select>
+
+</mapper>
+

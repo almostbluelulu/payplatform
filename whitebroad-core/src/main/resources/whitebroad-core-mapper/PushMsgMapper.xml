@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yeepay.g3.core.whitebroad.repository.PushMsgDao">
+
+	<resultMap id="BaseResultMap" type="com.yeepay.g3.core.whitebroad.entity.PushMsgEntity">
+		<id column="ID" property="id"/>
+		<result column="MESSAGE_NO" jdbcType="VARCHAR" property="messageNo"/>
+		<result column="JPUSH_ID" jdbcType="VARCHAR" property="jpushId"/>
+		<result column="OPERATOR" jdbcType="VARCHAR" property="operator"/>
+		<result column="TYPE" jdbcType="VARCHAR" property="type"/>
+		<result column="TITLE" jdbcType="VARCHAR" property="title"/>
+		<result column="CONTENT" jdbcType="VARCHAR" property="content"/>
+		<result column="LIFE_START" jdbcType="TIMESTAMP" property="lifeStart"/>
+		<result column="LIFE_END" jdbcType="TIMESTAMP" property="lifeEnd"/>
+		<result column="URL1" jdbcType="VARCHAR" property="url1"/>
+		<result column="URL2" jdbcType="VARCHAR" property="url2"/>
+		<result column="user_numbers" jdbcType="VARCHAR" property="userNumbers"/>
+		<result column="APP_VERSION_ID" jdbcType="VARCHAR" property="appVersionId"/>
+		<result column="platform_enum" jdbcType="VARCHAR" property="platformEnum"/>
+		<result column="MANUFACTURER" jdbcType="VARCHAR" property="manufacturer"/>
+		<result column="MODEL" jdbcType="VARCHAR" property="model"/>
+		<result column="PUSH_STATUS" jdbcType="VARCHAR" property="pushStatus"/>
+		<result column="PUSH_TYPE" jdbcType="VARCHAR" property="pushType"/>
+		<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
+		<result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime"/>
+		<result column="PUSH_TIME" jdbcType="TIMESTAMP" property="pushTime"/>
+	</resultMap>
+
+	<select id="findTotalCount" resultType="int">
+		SELECT
+		count(1) AS totalCount
+		from wb_push_msg
+		where user_numbers like concat('%',#{userNumber,jdbcType=VARCHAR},'%')
+		and push_time &gt;= #{startDate}
+		and push_time &lt; #{endDate}
+		<if test="msgType != null">and type = #{msgType}</if>
+	</select>
+
+	<select id="findMsgByDate" resultMap="BaseResultMap" parameterType="java.util.Map">
+		SELECT
+		*
+		from wb_push_msg
+		where
+		user_numbers like concat('%',#{userNumber,jdbcType=VARCHAR},'%')
+		and push_time &gt;= #{startDate}
+		and push_time &lt; #{endDate}
+		<if test="msgType != null">and type = #{msgType}</if>
+		order by push_time desc
+		limit #{fromIndex}, #{pageSize}
+	</select>
+
+	<select id="findById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+		select *
+		from wb_push_msg
+		where ID = #{id,jdbcType=BIGINT}
+	</select>
+
+	<select id="findByMessageNo" parameterType="java.lang.String" resultMap="BaseResultMap">
+		select *
+		from wb_push_msg
+		where MESSAGE_NO = #{messageNo,jdbcType=VARCHAR}
+	</select>
+
+	<select id="nextSequence" resultType="long">
+		SELECT nextval('seq_wb_push_msg')
+  	</select>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id"
+			parameterType="com.yeepay.g3.core.whitebroad.entity.PushMsgEntity">
+		insert into wb_push_msg (MESSAGE_NO, JPUSH_ID,OPERATOR, TYPE, TITLE,CONTENT, LIFE_START,
+		LIFE_END,URL1, URL2, user_numbers, APP_VERSION_ID,platform_enum, MANUFACTURER,MODEL, PUSH_STATUS,
+		CREATE_TIME,UPDATE_TIME, PUSH_TIME,PUSH_TYPE)
+		values (#{messageNo,jdbcType=VARCHAR}, #{jpushId,jdbcType=VARCHAR},
+		#{operator,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR},
+		#{content,jdbcType=VARCHAR}, #{lifeStart,jdbcType=TIMESTAMP}, #{lifeEnd,jdbcType=TIMESTAMP},
+		#{url1,jdbcType=VARCHAR}, #{url2,jdbcType=VARCHAR}, #{userNumbers,jdbcType=VARCHAR},
+		#{appVersionId,jdbcType=VARCHAR},#{platformEnum,jdbcType=VARCHAR},#{manufacturer,jdbcType=VARCHAR},
+		#{model,jdbcType=VARCHAR}, #{pushStatus,jdbcType=VARCHAR}, CURRENT_TIMESTAMP ,
+		CURRENT_TIMESTAMP, #{pushTime,jdbcType=TIMESTAMP},#{pushType,jdbcType=VARCHAR})
+	</insert>
+
+	<update id="delete" parameterType="com.yeepay.g3.core.whitebroad.entity.PushMsgEntity">
+		update wb_push_msg
+		<set>
+			<if test="operator != null and operator.trim() != ''">
+				OPERATOR = #{operator,jdbcType=VARCHAR},
+			</if>
+			PUSH_STATUS = 'DELETED',
+			UPDATE_TIME = CURRENT_TIMESTAMP
+		</set>
+		where ID = #{id,jdbcType=BIGINT} AND PUSH_STATUS = 'SENDED'
+	</update>
+
+	<update id="updateAfterSend" parameterType="com.yeepay.g3.core.whitebroad.entity.PushMsgEntity">
+		update wb_push_msg
+		<set>
+			<if test="jpushId != null">
+				JPUSH_ID = #{jpushId,},
+			</if>
+			<if test="operator != null and operator.trim() != ''">
+				OPERATOR = #{operator},
+			</if>
+			<if test="pushStatus != null">
+				PUSH_STATUS = #{pushStatus},
+			</if>
+			<if test="pushTime != null">
+				PUSH_TIME = #{pushTime},
+			</if>
+			<if test="pushType != null">
+				PUSH_TYPE = #{pushType},
+			</if>
+			UPDATE_TIME = CURRENT_TIMESTAMP
+		</set>
+		where ID = #{id} AND PUSH_STATUS = 'NOT_SEND'
+	</update>
+
+	<update id="updateBeforeSend" parameterType="com.yeepay.g3.core.whitebroad.entity.PushMsgEntity">
+		update wb_push_msg
+		<set>
+			<if test="operator != null and operator.trim() != ''">
+				OPERATOR = #{operator,jdbcType=VARCHAR},
+			</if>
+			<if test="title != null and title.trim() != ''">
+				TITLE = #{title,jdbcType=VARCHAR},
+			</if>
+			<if test="content != null and content.trim() != ''">
+				CONTENT = #{content,jdbcType=VARCHAR},
+			</if>
+			<if test="lifeStart != null">
+				LIFE_START = #{lifeStart,jdbcType=TIMESTAMP},
+			</if>
+			<if test="lifeEnd != null">
+				LIFE_END = #{lifeEnd,jdbcType=TIMESTAMP},
+			</if>
+			<if test="url1 != null and url1.trim() != ''">
+				URL1 = #{url1,jdbcType=VARCHAR},
+			</if>
+			<if test="url2 != null and url2.trim() != ''">
+				URL2 = #{url2,jdbcType=VARCHAR},
+			</if>
+			<if test="userNumbers != null and userNumbers.trim() != ''">
+				user_numbers = #{userNumbers,jdbcType=VARCHAR},
+			</if>
+			<if test="appVersionId != null and appVersionId.trim() != ''">
+				APP_VERSION_ID = #{appVersionId,jdbcType=VARCHAR},
+			</if>
+			<if test="manufacturer != null and manufacturer.trim() != ''">
+				MANUFACTURER = #{manufacturer,jdbcType=VARCHAR},
+			</if>
+			<if test="model != null and model.trim() != ''">
+				MODEL = #{model,jdbcType=VARCHAR},
+			</if>
+			UPDATE_TIME = CURRENT_TIMESTAMP
+		</set>
+		where ID = #{id,jdbcType=BIGINT} AND PUSH_STATUS = 'NOT_SEND'
+	</update>
+</mapper>

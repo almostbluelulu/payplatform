@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yeepay.g3.core.whitebroad.repository.WbUserTokenDao">
+	<!--auto generated Code-->
+	<resultMap id="BaseResultMap" type="com.yeepay.g3.core.whitebroad.entity.WbUserTokenEntity">
+		<result column="id" property="id"/>
+		<result column="phone_number" property="phoneNumber" typeHandler="SensitiveL2StringHandler"/>
+		<result column="user_number" property="userNumber"/>
+		<result column="token" property="token"/>
+		<result column="imei" property="imei"/>
+		<result column="refresh_time" property="refreshTime"/>
+		<result column="expire_time" property="expireTime"/>
+	</resultMap>
+
+	<!--auto generated Code-->
+	<sql id="all_column">
+        id,
+        phone_number,
+        user_number,
+        token,
+        imei,
+        refresh_time,
+        expire_time
+    </sql>
+    
+    <!-- 查询用户token信息 -->
+    <select id="selectUserToken" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    	select 
+			<include refid="all_column" />  
+	      from wb_user_token 
+	     where token = #{userToken}
+    </select>
+    <!-- 查询用户token信息 -->
+    <select id="selectUserTokenByUserNo" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    	select 
+			<include refid="all_column" />  
+	      from wb_user_token 
+	     where user_number = #{userNo}
+    </select>
+
+	<!--auto generated Code-->
+	<insert id="insert" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO wb_user_token (
+            phone_number,
+            user_number,
+            token,
+            imei,
+            refresh_time,
+            expire_time
+        ) VALUES (
+            #{pojo.phoneNumber},
+            #{pojo.userNumber},
+            #{pojo.token},
+            #{pojo.imei},
+            #{pojo.refreshTime},
+            #{pojo.expireTime}
+        )
+    </insert>
+
+	<!-- 更新token-->
+	<update id="updateToken">
+		UPDATE wb_user_token
+		<set>
+			<if test="pojo.token != null">token = #{pojo.token},</if>
+			<if test="pojo.refreshTime != null">refresh_time = #{pojo.refreshTime},</if>
+			<if test="pojo.expireTime != null">expire_time = #{pojo.expireTime}</if>
+		</set>
+		WHERE id = #{pojo.id}
+	</update>
+	
+	<!--刷新过期时间-->
+	<update id="updateExpireTime">
+		UPDATE wb_user_token
+		<set>
+			<if test="pojo.refreshTime != null">refresh_time = #{pojo.refreshTime},</if>
+			<if test="pojo.expireTime != null">expire_time = #{pojo.expireTime}</if>
+		</set>
+		WHERE id = #{pojo.id}
+	</update>
+	
+	<!--使token清空-->
+	<update id="revokeToken">
+		UPDATE wb_user_token
+		SET token = NULL
+		WHERE id = #{pojo.id}
+	</update>
+</mapper>
+

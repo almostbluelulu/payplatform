@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yeepay.g3.core.whitebroad.repository.SettleDao">
+	<!--auto generated Code-->
+	<resultMap id="AllColumnMap" type="com.yeepay.g3.core.whitebroad.entity.order.SettleEntity">
+		<result column="id" property="id"/>
+		<result column="customer_number" property="customerNumber"/>
+		<result column="settle_amount" property="settleAmount"/>
+		<result column="settle_fee" property="settleFee"/>
+		<result column="settle_type" property="settleType"/>
+		<result column="settle_time" property="settleDate"/>
+		<result column="create_time" property="createTime"/>
+		<result column="update_time" property="updateTime"/>
+	</resultMap>
+
+	<select id="findCuzSettleByDate" resultMap="AllColumnMap" parameterType="java.util.Map">
+		SELECT
+		<include refid="all_column"/>
+		from wb_settle
+		where
+		customer_number = #{customerNumber,jdbcType=VARCHAR}
+		and settle_time &gt;= #{settleDateStart}
+		and settle_time &lt;= #{settleDateEnd}
+		<if test="settleType != null">and settle_type = #{settleType}</if>
+		order by create_time desc
+		limit #{fromIndex}, #{pageSize}
+	</select>
+
+	<select id="findCuzByDateAndType" resultMap="AllColumnMap" parameterType="java.util.Map">
+		select *
+		from wb_settle
+		where
+		 	settle_type = #{settleType,jdbcType=VARCHAR}
+			AND customer_number = #{customerNumber,jdbcType=VARCHAR}
+			AND settle_time = #{settleDate,jdbcType=VARCHAR}
+	</select>
+
+	<!--auto generated Code-->
+	<sql id="all_column">
+        `customer_number`,
+        `settle_amount`,
+        `settle_fee`,
+        `settle_type`,
+        `settle_time`,
+        `id`,
+        `create_time`,
+        `update_time`
+    </sql>
+
+	<select id="findTotalCount" resultType="int">
+		SELECT
+		count(1) AS totalCount
+		from wb_settle
+		where customer_number = #{customerNumber}
+		and settle_time &gt;= #{startDate}
+		and settle_time &lt;= #{endDate}
+		<if test="settleType != null">and settle_type = #{settleType}</if>
+	</select>
+
+	<select id="getTotalSum" resultType="java.math.BigDecimal">
+		SELECT
+		sum(settle_amount) AS totalSum
+		from wb_settle
+		where customer_number = #{customerNumber}
+		and settle_time &gt;= #{startDate}
+		and settle_time &lt;= #{endDate}
+		<if test="settleType != null">and settle_type = #{settleType}</if>
+	</select>
+
+	<!--auto generated Code-->
+	<insert id="insert" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO wb_settle (
+            `customer_number`,
+            `settle_amount`,
+            `settle_fee`,
+            `settle_type`,
+            `settle_time`,
+            `id`,
+            `create_time`,
+            `update_time`
+        ) VALUES (
+            #{pojo.customerNumber},
+            #{pojo.settleAmount},
+            #{pojo.settleFee},
+            #{pojo.settleType},
+            CURRENT_DATE ,
+            #{pojo.id},
+            CURRENT_TIMESTAMP ,
+            NULL
+        )
+    </insert>
+
+	<!--auto generated Code-->
+	<insert id="insertSelective" useGeneratedKeys="true" keyProperty="pojo.id">
+		INSERT INTO wb_settle
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="pojo.customerNumber!=null">`customer_number`,</if>
+			<if test="pojo.settleAmount!=null">`settle_amount`,</if>
+			<if test="pojo.settleFee!=null">`settle_fee`,</if>
+			<if test="pojo.settleType!=null">`settle_type`,</if>
+			<if test="pojo.settleDate!=null">`settle_time`,</if>
+			<if test="pojo.id!=null">`id`,</if>
+			<if test="pojo.createTime!=null">`create_time`,</if>
+			<if test="pojo.updateTime!=null">`update_time`,</if>
+		</trim>
+		VALUES
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="pojo.customerNumber!=null">#{pojo.customerNumber},</if>
+			<if test="pojo.settleAmount!=null">#{pojo.settleAmount},</if>
+			<if test="pojo.settleFee!=null">#{pojo.settleFee},</if>
+			<if test="pojo.settleType!=null">#{pojo.settleType},</if>
+			<if test="pojo.settleDate!=null">#{pojo.settleDate},</if>
+			<if test="pojo.id!=null">#{pojo.id},</if>
+			<if test="pojo.createTime!=null">#{pojo.createTime},</if>
+			<if test="pojo.updateTime!=null">#{pojo.updateTime},</if>
+		</trim>
+	</insert>
+
+	<!--auto generated Code-->
+	<insert id="insertList">
+		INSERT INTO wb_settle (
+		<include refid="all_column"/>
+		)VALUES
+		<foreach collection="pojos" item="pojo" index="index" separator=",">
+			(
+			#{pojo.customerNumber},
+			#{pojo.settleAmount},
+			#{pojo.settleFee},
+			#{pojo.settleType},
+			#{pojo.settleDate},
+			#{pojo.id},
+			#{pojo.createTime},
+			#{pojo.updateTime}
+			)
+		</foreach>
+	</insert>
+
+	<!--auto generated Code-->
+	<update id="update">
+		UPDATE wb_settle
+		<set>
+			<if test="pojo.settleAmount != null">`settle_amount` = #{pojo.settleAmount},</if>
+			<if test="pojo.settleFee != null">`settle_fee` = #{pojo.settleFee},</if>
+			<if test="pojo.settleDate != null">`settle_time` = #{pojo.settleDate},</if>
+			<if test="pojo.updateTime != null">`update_time` = #{pojo.updateTime}</if>
+		</set>
+		WHERE `id` = #{pojo.id}
+	</update>
+</mapper>
+
