@@ -15,16 +15,16 @@
 
 	<typeAliases>
 
-		<typeAlias type="com.yeepay.g3.core.whitebroad.handler.SensitiveString"/>
-		<typeAlias type="com.yeepay.g3.core.whitebroad.handler.SensitiveL1StringHandler"/>
-		<typeAlias type="com.yeepay.g3.core.whitebroad.handler.SensitiveL2StringHandler"/>
+		<typeAlias type="com.shentu.g3.core.whitebroad.handler.SensitiveString"/>
+		<typeAlias type="com.shentu.g3.core.whitebroad.handler.SensitiveL1StringHandler"/>
+		<typeAlias type="com.shentu.g3.core.whitebroad.handler.SensitiveL2StringHandler"/>
 
 	</typeAliases>
 
 	<typeHandlers>
-		<typeHandler handler="SensitiveL1StringHandler" javaType="com.yeepay.g3.core.whitebroad.handler.SensitiveString"
+		<typeHandler handler="SensitiveL1StringHandler" javaType="com.shentu.g3.core.whitebroad.handler.SensitiveString"
 					 jdbcType="VARCHAR"/>
-		<typeHandler handler="SensitiveL2StringHandler" javaType="com.yeepay.g3.core.whitebroad.handler.SensitiveString"
+		<typeHandler handler="SensitiveL2StringHandler" javaType="com.shentu.g3.core.whitebroad.handler.SensitiveString"
 					 jdbcType="VARCHAR"/>
 	</typeHandlers>
 

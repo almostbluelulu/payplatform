@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yeepay.g3.core.whitebroad.repository.PushMsgDao">
+<mapper namespace="com.shentu.g3.core.whitebroad.repository.PushMsgDao">
 
-	<resultMap id="BaseResultMap" type="com.yeepay.g3.core.whitebroad.entity.PushMsgEntity">
+	<resultMap id="BaseResultMap" type="com.shentu.g3.core.whitebroad.entity.PushMsgEntity">
 		<id column="ID" property="id"/>
 		<result column="MESSAGE_NO" jdbcType="VARCHAR" property="messageNo"/>
 		<result column="JPUSH_ID" jdbcType="VARCHAR" property="jpushId"/>
@@ -66,7 +66,7 @@
   	</select>
 
 	<insert id="save" useGeneratedKeys="true" keyProperty="id"
-			parameterType="com.yeepay.g3.core.whitebroad.entity.PushMsgEntity">
+			parameterType="com.shentu.g3.core.whitebroad.entity.PushMsgEntity">
 		insert into wb_push_msg (MESSAGE_NO, JPUSH_ID,OPERATOR, TYPE, TITLE,CONTENT, LIFE_START,
 		LIFE_END,URL1, URL2, user_numbers, APP_VERSION_ID,platform_enum, MANUFACTURER,MODEL, PUSH_STATUS,
 		CREATE_TIME,UPDATE_TIME, PUSH_TIME,PUSH_TYPE)
@@ -79,7 +79,7 @@
 		CURRENT_TIMESTAMP, #{pushTime,jdbcType=TIMESTAMP},#{pushType,jdbcType=VARCHAR})
 	</insert>
 
-	<update id="delete" parameterType="com.yeepay.g3.core.whitebroad.entity.PushMsgEntity">
+	<update id="delete" parameterType="com.shentu.g3.core.whitebroad.entity.PushMsgEntity">
 		update wb_push_msg
 		<set>
 			<if test="operator != null and operator.trim() != ''">
@@ -91,7 +91,7 @@
 		where ID = #{id,jdbcType=BIGINT} AND PUSH_STATUS = 'SENDED'
 	</update>
 
-	<update id="updateAfterSend" parameterType="com.yeepay.g3.core.whitebroad.entity.PushMsgEntity">
+	<update id="updateAfterSend" parameterType="com.shentu.g3.core.whitebroad.entity.PushMsgEntity">
 		update wb_push_msg
 		<set>
 			<if test="jpushId != null">
@@ -114,7 +114,7 @@
 		where ID = #{id} AND PUSH_STATUS = 'NOT_SEND'
 	</update>
 
-	<update id="updateBeforeSend" parameterType="com.yeepay.g3.core.whitebroad.entity.PushMsgEntity">
+	<update id="updateBeforeSend" parameterType="com.shentu.g3.core.whitebroad.entity.PushMsgEntity">
 		update wb_push_msg
 		<set>
 			<if test="operator != null and operator.trim() != ''">

@@ -5,10 +5,10 @@
 package com.yeepay.g3.core;
 
 import com.google.gson.Gson;
-import com.yeepay.g3.core.whitebroad.BaseTest;
-import com.yeepay.g3.core.whitebroad.util.Constant;
-import com.yeepay.g3.core.whitebroad.util.security.AES;
-import com.yeepay.g3.facade.whitebroad.dto.opr.OprOrderParamRequestDTO;
+import com.shentu.g3.core.whitebroad.BaseTest;
+import com.shentu.g3.core.whitebroad.util.Constant;
+import com.shentu.g3.core.whitebroad.util.security.AES;
+import com.shentu.g3.facade.whitebroad.dto.opr.OprOrderParamRequestDTO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;

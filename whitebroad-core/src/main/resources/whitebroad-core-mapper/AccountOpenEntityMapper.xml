@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.yeepay.g3.core.whitebroad.repository.AccountOpenDao">
+<mapper namespace="com.shentu.g3.core.whitebroad.repository.AccountOpenDao">
 	<!--auto generated Code-->
-	<resultMap id="AllColumnMap" type="com.yeepay.g3.core.whitebroad.entity.AccountOpenEntity">
+	<resultMap id="AllColumnMap" type="com.shentu.g3.core.whitebroad.entity.AccountOpenEntity">
 		<result column="id" property="id"/>
 		<result column="user_number" property="userNumber"/>
 		<result column="customer_no" property="customerNo"/>

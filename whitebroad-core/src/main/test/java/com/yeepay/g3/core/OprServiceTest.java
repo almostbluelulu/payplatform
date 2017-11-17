@@ -12,10 +12,10 @@ package com.yeepay.g3.core;
  * @version: 1.0.0
  */
 
-import com.yeepay.g3.core.whitebroad.BaseTest;
-import com.yeepay.g3.core.whitebroad.biz.OprServiceBiz;
-import com.yeepay.g3.core.whitebroad.entity.trade.Order;
-import com.yeepay.g3.core.whitebroad.service.trade.OrderService;
+import com.shentu.g3.core.whitebroad.BaseTest;
+import com.shentu.g3.core.whitebroad.biz.OprServiceBiz;
+import com.shentu.g3.core.whitebroad.entity.trade.Order;
+import com.shentu.g3.core.whitebroad.service.trade.OrderService;
 import com.yeepay.g3.frame.yop.ca.rsa.RSAKeyUtils;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

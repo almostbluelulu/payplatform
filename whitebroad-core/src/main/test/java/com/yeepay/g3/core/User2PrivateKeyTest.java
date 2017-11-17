@@ -13,10 +13,10 @@ package com.yeepay.g3.core;
  */
 
 import com.google.gson.Gson;
-import com.yeepay.g3.core.whitebroad.BaseTest;
-import com.yeepay.g3.core.whitebroad.entity.User2PrivateKey;
-import com.yeepay.g3.core.whitebroad.service.User2PrivateKeyService;
-import com.yeepay.g3.core.whitebroad.util.Constant;
+import com.shentu.g3.core.whitebroad.BaseTest;
+import com.shentu.g3.core.whitebroad.entity.User2PrivateKey;
+import com.shentu.g3.core.whitebroad.service.User2PrivateKeyService;
+import com.shentu.g3.core.whitebroad.util.Constant;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Rollback;

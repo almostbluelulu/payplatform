@@ -5,10 +5,10 @@
 package com.yeepay.g3.core;
 
 import com.google.gson.Gson;
-import com.yeepay.g3.core.whitebroad.BaseTest;
-import com.yeepay.g3.core.whitebroad.entity.trade.Order;
-import com.yeepay.g3.core.whitebroad.service.trade.OrderService;
-import com.yeepay.g3.facade.whitebroad.enumtype.trx.ScanType;
+import com.shentu.g3.core.whitebroad.BaseTest;
+import com.shentu.g3.core.whitebroad.entity.trade.Order;
+import com.shentu.g3.core.whitebroad.service.trade.OrderService;
+import com.shentu.g3.facade.whitebroad.enumtype.trx.ScanType;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

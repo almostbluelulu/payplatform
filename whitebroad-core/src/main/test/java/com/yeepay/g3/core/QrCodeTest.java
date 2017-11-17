@@ -13,13 +13,13 @@ package com.yeepay.g3.core;
  */
 
 import com.google.gson.Gson;
-import com.yeepay.g3.core.whitebroad.BaseTest;
-import com.yeepay.g3.core.whitebroad.entity.qrcode.QrCode;
-import com.yeepay.g3.core.whitebroad.service.qrcode.QrCodeService;
-import com.yeepay.g3.facade.whitebroad.dto.qrCode.QrCodeRequestDTO;
-import com.yeepay.g3.facade.whitebroad.dto.qrCode.QrCodeResponseDTO;
-import com.yeepay.g3.facade.whitebroad.enumtype.qrcode.Status;
-import com.yeepay.g3.facade.whitebroad.facade.QrCodeFacade;
+import com.shentu.g3.core.whitebroad.BaseTest;
+import com.shentu.g3.core.whitebroad.entity.qrcode.QrCode;
+import com.shentu.g3.core.whitebroad.service.qrcode.QrCodeService;
+import com.shentu.g3.facade.whitebroad.dto.qrCode.QrCodeRequestDTO;
+import com.shentu.g3.facade.whitebroad.dto.qrCode.QrCodeResponseDTO;
+import com.shentu.g3.facade.whitebroad.enumtype.qrcode.Status;
+import com.shentu.g3.facade.whitebroad.facade.QrCodeFacade;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Rollback;

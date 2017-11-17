@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.yeepay.g3.core.whitebroad.repository.PaymentDao">
+<mapper namespace="com.shentu.g3.core.whitebroad.repository.PaymentDao">
     <!--auto generated Code-->
-    <resultMap id="AllColumnMap" type="com.yeepay.g3.core.whitebroad.entity.trade.Payment">
+    <resultMap id="AllColumnMap" type="com.shentu.g3.core.whitebroad.entity.trade.Payment">
         <result column="id" property="id"/>
         <result column="yeepay_order_id" property="yeepayOrderId"/>
         <result column="order_id" property="order_id"/>
@@ -13,7 +13,7 @@
         <result column="real_amount" property="realAmount"/>
         <result column="fee_amount" property="feeAmount"/>
         <result column="bank_name" property="bankName"/>
-        <result column="card_number" property="cardNumber" typeHandler="com.yeepay.g3.core.whitebroad.handler.SensitiveL2StringHandler"/>
+        <result column="card_number" property="cardNumber" typeHandler="com.shentu.g3.core.whitebroad.handler.SensitiveL2StringHandler"/>
         <result column="card_type" property="cardType"/>
         <result column="create_time" property="createTime"/>
         <result column="complete_time" property="completeTime"/>

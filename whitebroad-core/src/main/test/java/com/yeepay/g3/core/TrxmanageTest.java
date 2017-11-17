@@ -13,15 +13,15 @@ package com.yeepay.g3.core;
  */
 
 import com.google.gson.Gson;
-import com.yeepay.g3.core.whitebroad.BaseTest;
-import com.yeepay.g3.core.whitebroad.biz.OprServiceBiz;
-import com.yeepay.g3.core.whitebroad.service.trade.OrderService;
-import com.yeepay.g3.core.whitebroad.util.RemoteFacadeFactory;
-import com.yeepay.g3.core.whitebroad.util.security.Md5Utils;
-import com.yeepay.g3.facade.whitebroad.dto.opr.*;
-import com.yeepay.g3.facade.whitebroad.enumtype.ExternalSystem;
-import com.yeepay.g3.facade.whitebroad.enumtype.trx.ScanType;
-import com.yeepay.g3.facade.whitebroad.facade.TrxManageFacade;
+import com.shentu.g3.core.whitebroad.BaseTest;
+import com.shentu.g3.core.whitebroad.biz.OprServiceBiz;
+import com.shentu.g3.core.whitebroad.service.trade.OrderService;
+import com.shentu.g3.core.whitebroad.util.RemoteFacadeFactory;
+import com.shentu.g3.core.whitebroad.util.security.Md5Utils;
+import com.shentu.g3.facade.whitebroad.dto.opr.*;
+import com.shentu.g3.facade.whitebroad.enumtype.ExternalSystem;
+import com.shentu.g3.facade.whitebroad.enumtype.trx.ScanType;
+import com.shentu.g3.facade.whitebroad.facade.TrxManageFacade;
 import org.apache.commons.lang.StringUtils;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,7 +61,7 @@ public class TrxmanageTest extends BaseTest {
     }
     @Test
     public void getPayUrl(){
-        GetCashierUrlRequestDTO  requestDTO =  new GetCashierUrlRequestDTO();
+        GetCashierUrlRequestDTO requestDTO =  new GetCashierUrlRequestDTO();
         requestDTO.setOrderId("wbtrx11234567806");
         GetCashierUrlResponseDTO responseDTO  = trxManageFacade.getCashierUrl(requestDTO);
         System.out.println("####"+responseDTO.getPayUrl());

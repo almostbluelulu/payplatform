@@ -5,8 +5,8 @@
 package com.yeepay.g3.core;
 
 import com.google.gson.Gson;
-import com.yeepay.g3.facade.whitebroad.dto.cashier.CashierParam;
-import com.yeepay.g3.facade.whitebroad.dto.opr.OprOrderParamRequestDTO;
+import com.shentu.g3.facade.whitebroad.dto.cashier.CashierParam;
+import com.shentu.g3.facade.whitebroad.dto.opr.OprOrderParamRequestDTO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;

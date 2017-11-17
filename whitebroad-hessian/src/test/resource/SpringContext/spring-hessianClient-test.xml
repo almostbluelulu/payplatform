@@ -14,7 +14,7 @@
 			<value>http://localhost:8080/whitebroad-hessian/hessian/trxFacade</value>
 		</property>
 		<property name="serviceInterface">
-			<value>com.yeepay.g3.facade.whitebroad.facade.TrxManageFacade</value>
+			<value>com.shentu.g3.facade.whitebroad.facade.TrxManageFacade</value>
 		</property>
 	</bean>
 

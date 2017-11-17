@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.yeepay.g3.core.whitebroad.repository.UserDao">
+<mapper namespace="com.shentu.g3.core.whitebroad.repository.UserDao">
 	<!--auto generated Code-->
-	<resultMap id="AllColumnMap" type="com.yeepay.g3.core.whitebroad.entity.UserEntity">
+	<resultMap id="AllColumnMap" type="com.shentu.g3.core.whitebroad.entity.UserEntity">
 		<result column="id" property="id"/>
 		<result column="phone_number" property="phoneNumber" typeHandler="SensitiveL2StringHandler"/>
 		<result column="user_number" property="userNumber"/>

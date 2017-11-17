@@ -70,7 +70,7 @@
 		<description></description>
 		<display-name>OutPutClassServlet</display-name>
 		<servlet-name>OutPutClassServlet</servlet-name>
-		<servlet-class>com.yeepay.g3.hessian.servlet.OutPutClassServlet</servlet-class>
+		<servlet-class>com.shentu.g3.hessian.servlet.OutPutClassServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>OutPutClassServlet</servlet-name>
