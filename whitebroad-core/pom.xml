@@ -4,12 +4,12 @@
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<parent>
 		<artifactId>whitebroad-parent</artifactId>
-		<groupId>com.yeepay.g3.wb</groupId>
+		<groupId>com.shentu.g3.wb</groupId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.yeepay.g3.wb</groupId>
+	<groupId>com.shentu.g3.wb</groupId>
 	<artifactId>whitebroad-core</artifactId>
 	<version>${whitebroad.version}</version>
 
@@ -88,7 +88,7 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.yeepay.g3.wb</groupId>
+			<groupId>com.shentu.g3.wb</groupId>
 			<artifactId>whitebroad-facade</artifactId>
 			<version>1.0</version>
 		</dependency>
