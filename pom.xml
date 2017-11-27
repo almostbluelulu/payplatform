@@ -5,18 +5,18 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.shentu.g3.wb</groupId>
-	<artifactId>whitebroad-parent</artifactId>
+	<artifactId>shentu-parent</artifactId>
 	<packaging>pom</packaging>
 	<version>1.0-SNAPSHOT</version>
 
-	<name>Whitebroad :: Parent</name>
+	<name>shentu :: Parent</name>
 	<url>http://www.yeepay.com</url>
 
 
 	<modules>
-		<module>whitebroad-core</module>
-		<module>whitebroad-facade</module>
-		<module>whitebroad-hessian</module>
+		<module>shentu-core</module>
+		<module>shentu-facade</module>
+		<module>shentu-hessian</module>
 		<module>shentu-pay</module>
 	</modules>
 
@@ -24,7 +24,7 @@
 		<org.springframework.version>3.2.9.RELEASE</org.springframework.version>
 		<mybatis-spring.version>1.2.2</mybatis-spring.version>
 		<mybatis.version>3.2.7</mybatis.version>
-		<whitebroad.version>1.0</whitebroad.version>
+		<shentu.version>1.0-SNAPSHOT</shentu.version>
 		<gson.version>2.2.4</gson.version>
 	</properties>
 
@@ -129,7 +129,7 @@
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<version>2.2</version>
 				<configuration>
-					<url>http://localhost:8081/whitebroad-hessian</url>
+					<url>http://localhost:8081/shentu-hessian</url>
 					<server>tomcat</server>
 					<systemProperties>
 						<JAVA_OPTS>-Xms1800m -Xmx1800m -XX:MaxPermSize=512m</JAVA_OPTS>
